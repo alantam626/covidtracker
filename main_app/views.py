@@ -61,7 +61,7 @@ class StrategyDelete(DeleteView):
 @login_required
 def kits_detail(request, kit_id):
     if request.user.kit_set.filter(id=kit_id).exists():
-        kit = Kit.objects.get(id=kit_id)
+        kits = Kit.objects.get(id=kit_id)
 
 @login_required
 def create_kit(request, user_id):
@@ -75,3 +75,14 @@ def create_kit(request, user_id):
 class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
     fields = '__all__'
+
+class KitDetail(LoginRequiredMixin, DetailView):
+    model = Kit
+
+class KitUpdate(LoginRequiredMixin, UpdateView):
+    model = Kit
+    fields = '__all__'
+
+class KitDelete(LoginRequiredMixin, DetailView):
+    model = Kit
+    success_url = '/kits/'
