@@ -40,14 +40,14 @@ def kits_detail(request, kit_id):
     if request.user.kit_set.filter(id=kit_id).exists():
         kit = Kit.objects.get(id=kit_id)
 
-# @login_required
-# def create_kit(request, user_id):
-#     form = KitForm(request.POST)
-#     if form.is_valid():
-#         new_kit = form.save(commit=False)
-#         new_kit.user_id = user_id
-#         new_kit.save()
-#     return redirect('detail', user_id=user_id)
+@login_required
+def create_kit(request, user_id):
+    form = KitForm(request.POST)
+    if form.is_valid():
+        new_kit = form.save(commit=False)
+        new_kit.user_id = user_id
+        new_kit.save()
+    return redirect('detail', user_id=user_id)
 
 
 class KitCreate (LoginRequiredMixin, CreateView):
