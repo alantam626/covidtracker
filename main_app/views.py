@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -34,10 +35,15 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 @login_required
-def create_kit(request, user):
+def create_kit(request, user_id):
     form = KitForm(request.POST)
     if form.is_valid():
         new_kit = form.save(commit=False)
-        new_kit = user = user
+        new_kit.user_id = user_id
         new_kit.save()
     return redirect('detail', user_id=user_id)
+
+
+class KitCreate (LoginRequiredMixin, CreateView):
+    model = Kit
+    fields = '__all__'

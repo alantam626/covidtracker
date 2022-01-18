@@ -6,4 +6,4 @@ from .models import Kit
 class KitForm(ModelForm):
     class Meta: 
         model = Kit
-        fields = ['date', 'username', 'strategy']
+        fields = ['date', 'user_id', 'strategy']
