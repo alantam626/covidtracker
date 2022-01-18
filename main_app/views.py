@@ -5,14 +5,10 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-<<<<<<< HEAD
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Strategy, Kit
-
-=======
-from .models import Kit
 from .forms import KitForm
->>>>>>> f613ec751404ce00871fc246c00637b8ff999297
+
 
 # import HttpResponse to test view functions
 # will delete after imlementing templates
@@ -48,7 +44,6 @@ def signup(request):
     context = {'form': form, 'error-message': error_mesage}
     return render(request, 'registration/signup.html', context)
 
-<<<<<<< HEAD
 class StrategyCreate(CreateView):
     model = Strategy
     fields = '__all__'
@@ -63,7 +58,6 @@ class StrategyDelete(DeleteView):
     success_url = '/strategies_index/'
 
     
-=======
 @login_required
 def kits_detail(request, kit_id):
     if request.user.kit_set.filter(id=kit_id).exists():
@@ -78,8 +72,6 @@ def create_kit(request, user_id):
         new_kit.save()
     return redirect('detail', user_id=user_id)
 
-
 class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
     fields = '__all__'
->>>>>>> f613ec751404ce00871fc246c00637b8ff999297
