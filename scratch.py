@@ -1,16 +1,16 @@
+#views.py
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Strategy, Kit
-from .forms import KitForm
 
 
 # import HttpResponse to test view functions
+
 # will delete after imlementing templates
 from django.http import HttpResponse
 
@@ -57,21 +57,18 @@ class StrategyDelete(DeleteView):
     model = Strategy
     success_url = '/strategies_index/'
 
-    
-@login_required
-def kits_detail(request, kit_id):
-    if request.user.kit_set.filter(id=kit_id).exists():
-        kit = Kit.objects.get(id=kit_id)
+#urls.py
+from django.urls import path
+from . import views
 
-@login_required
-def create_kit(request, user_id):
-    form = KitForm(request.POST)
-    if form.is_valid():
-        new_kit = form.save(commit=False)
-        new_kit.user_id = user_id
-        new_kit.save()
-    return redirect('detail', user_id=user_id)
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('kits_index/', views.kits_index, name='kits_index'),
+    path('accounts/signup/', views.signup, name='signup'),
+    path('strategies/', views.strategies_index, name='strategies_index'),
+    path('strategies/<int:strategy_id>', views.strategies_detail, name='strategies_detail'),
+    path('strategies/create/', views.StrategyCreate.as_view(), name='strategies_create'),
+    path('strategies/<int:strategy_id>/update', views.StrategyUpdate.as_view(), name='strategies_update'),
+    path('strategies/<int:strategy_id>/delete', views.StrategyDelete.as_view(), name='strategies_delete'),
+]
 
-class KitCreate (LoginRequiredMixin, CreateView):
-    model = Kit
-    fields = '__all__'
