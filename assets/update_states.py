@@ -11,6 +11,8 @@ try:
     cursor.execute("SELECT version();")
     record = cursor.fetchone()
     print("You are connected to - ", record, "\n")
+    insert_query = """INSERT INTO covidtracker VALUES()"""
+
 
 except (Exception, Error) as error:
     print("Error while connecting to PostgreSQL", error)
