@@ -27,7 +27,7 @@ try:
         for state in states:
             # state = ['state_name', 'confirmed', 'Deaths', 'Lat', 'Long']
             if state[0] != 'American Samoa' and state[0] != 'Diamond Princess' and state[0] != 'Grand Princess':
-                cursor.execute(f"INSERT INTO main_app_state (name, confirmed, deaths, lat, long) VALUES ('{state[0]}', '{state[1]}', '{state[2]}', '{state[3]}', '{state[4]}');")
+                cursor.execute(f"INSERT INTO main_app_state (name, confirmed, death, lat, long) VALUES ('{state[0]}', '{state[1]}', '{state[2]}', '{state[3]}', '{state[4]}');")
     cursor.execute("SELECT * FROM main_app_state")
     # print queries
     for record in cursor:
@@ -42,8 +42,4 @@ finally:
     if (connection):
         cursor.close()
         connection.close()
-<<<<<<< HEAD
         print("PostgreSQL connection is closed")
-=======
-        print("PostgreSQL connection is closed")
->>>>>>> main

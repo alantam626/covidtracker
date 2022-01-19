@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Strategy, Kit, State
-from .forms import KitForm
+from .forms import KitForm, StrategyForm
 
 
 # import HttpResponse to test view functions
@@ -38,7 +38,7 @@ def signup(request):
             # This will add the user to the database
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('kit_index')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()

@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = '/kits/'
+LOGIN_REDIRECT_URL = '/kits_index/'
 
 LOGOUT_REDIRECT_URL = '/'
 
