@@ -2,7 +2,8 @@
 {% block content %}
 
 {% for strategy in strategies %}
-<div>Name: {{ strategy.name }}</div>
+<a href="{% url 'strategies_detail' strategy.id %}">
+    <div>Name: {{ strategy.name }}</div>
 {% endfor %}
 
 {% endblock %}

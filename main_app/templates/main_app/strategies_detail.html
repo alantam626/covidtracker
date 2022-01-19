@@ -4,4 +4,9 @@
 <div>Strategy: {{ strategy.name }}</div>
 <div>Rating: {{ strategy.rating }}</div>
 
+<ul>
+    <li><a href="{% url 'strategies_update' strategy.id %}">Edit Strategy</li>
+    <li><a href="{% url 'strategies_delete' strategy.id %}">Delete Strategy</li>
+</ul>
+
 {% endblock %}
