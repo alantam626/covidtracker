@@ -2,5 +2,10 @@
 {% block content %}
 
 <h1>Home</h1>
+{{ states }}
+{% for state in states %}
+    <p>{{ state.name }}</p>
+
+{% endfor %}
 
 {% endblock %}

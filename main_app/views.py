@@ -6,8 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from .models import Strategy, Kit
-from .forms import KitForm, StrategyForm
+from .models import Strategy, Kit, State
+from .forms import KitForm
+
 
 # import HttpResponse to test view functions
 # will delete after imlementing templates
@@ -15,7 +16,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    states = State.objects.all()
+    return render(request, 'home.html', { 'states': states })
 
 def kits_index(request):
     return render(request, 'covidtracker/index.html')
