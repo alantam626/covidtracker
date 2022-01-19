@@ -38,7 +38,7 @@ def signup(request):
             # This will add the user to the database
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('kit_index')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()

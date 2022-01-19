@@ -2,10 +2,20 @@
 {% block content %}
 
 <h1>Home</h1>
-{{ states }}
-{% for state in states %}
-    <p>{{ state.name }}</p>
 
-{% endfor %}
+<table>
+    <tr>
+        <th>State</th>
+        <th>Confiremd</th>
+        <th>Death</th>
+    </tr>
+    {% for state in states %}
+        <tr>
+            <td>{{ state.name }}</td>
+            <td>{{ state.confirmed }}</td>
+            <td>{{ state.death }}</td>
+        </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
