@@ -12,6 +12,7 @@ class Kit(models.Model):
     strategy = models.ManyToManyField(Strategy)
     
 class State(models.Model):
+    name = models.CharField(max_length = 30)
     confirmed = models.IntegerField()
     death = models.IntegerField()
     lat = models.CharField(max_length = 10)
