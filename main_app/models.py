@@ -1,5 +1,7 @@
-from re import S
 from django.db import models
+from django.urls import reverse
+# from re import S
+
 
 # Create your models here.
 
@@ -15,7 +17,7 @@ class Kit(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('toys_detail', kwargs={'pk': self.id})
+        return reverse('kit_detail', kwargs={'pk': self.id})
         
 class State(models.Model):
     confirmed = models.IntegerField()
