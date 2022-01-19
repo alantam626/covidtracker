@@ -8,15 +8,9 @@ urlpatterns = [
     path('strategies/', views.strategies_index, name='strategies_index'),
     path('strategies/<int:strategy_id>', views.strategies_detail, name='strategies_detail'),
     path('strategies/create/', views.StrategyCreate.as_view(), name='strategies_create'),
-<<<<<<< HEAD
-    path('strategies/<int:strategy_id>/update', views.StrategyUpdate.as_view(), name='strategies_update'),
-    path('strategies/<int:strategy_id>/delete', views.StrategyDelete.as_view(), name='strategies_delete'),
-    path('kits/create/', views.KitCreate.as_view(), name='kits_create'),
-=======
     path('strategies/<int:pk>/update', views.StrategyUpdate.as_view(), name='strategies_update'),
     path('strategies/<int:pk>/delete', views.StrategyDelete.as_view(), name='strategies_delete'),
     path('kits/create/', views.KitCreate.as_view(), name ='kits_create'),
->>>>>>> e25d92c38e79903caf27064aa95a3744c2e26512
     path('kits/<int:pk>/', views.KitDetail.as_view(), name='kits_detail'),
     path('kits/<int:pk>/', views.KitUpdate.as_view(), name='kits_update'),
     path('kits/<int:pk>/', views.KitDelete.as_view(), name='kits_delete'),
