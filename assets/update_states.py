@@ -42,4 +42,8 @@ finally:
     if (connection):
         cursor.close()
         connection.close()
+<<<<<<< HEAD
         print("PostgreSQL connection is closed")
+=======
+        print("PostgreSQL connection is closed")
+>>>>>>> main
