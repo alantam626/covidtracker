@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'covidtracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'covidtracker',
     }
 }
 
@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = '/kits/'
+LOGIN_REDIRECT_URL = '/kits_index/'
 
 LOGOUT_REDIRECT_URL = '/'
 

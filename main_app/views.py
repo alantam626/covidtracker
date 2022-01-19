@@ -7,8 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Strategy, Kit
-from .forms import KitForm
-
+from .forms import KitForm, StrategyForm
 
 # import HttpResponse to test view functions
 # will delete after imlementing templates
@@ -52,18 +51,25 @@ class StrategyUpdate(UpdateView):
     model = Strategy
     fields = ['rating', 'type']
 
-    
 class StrategyDelete(DeleteView):
     model = Strategy
     success_url = '/strategies_index/'
 
+def create_strategy(request):
+    form = StrategyForm(request.POST)
+    if form.is_valid():
+        new_strategy = form.save(commit=False)
+        new_strategy.save()
+    return redirect('detail')
+
     
-@login_required
+# @login_required
 def kits_detail(request, kit_id):
     if request.user.kit_set.filter(id=kit_id).exists():
         kits = Kit.objects.get(id=kit_id)
+        return render(request, 'kits/detail.html')
 
-@login_required
+# @login_required
 def create_kit(request, user_id):
     form = KitForm(request.POST)
     if form.is_valid():
@@ -85,4 +91,4 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
 
 class KitDelete(LoginRequiredMixin, DetailView):
     model = Kit
-    success_url = '/kits/'
+    success_url = '/kits_index/'
