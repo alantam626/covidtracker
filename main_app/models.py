@@ -11,7 +11,12 @@ class Strategy(models.Model):
 class Kit(models.Model):
     date = models.DateField()
     strategy = models.ManyToManyField(Strategy)
-    
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('toys_detail', kwargs={'pk': self.id})
+        
 class State(models.Model):
     confirmed = models.IntegerField()
     death = models.IntegerField()
