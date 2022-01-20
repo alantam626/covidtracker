@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView, NameView
 from .models import Strategy, Kit, State
 from .forms import KitForm, StrategyForm
 
@@ -71,7 +71,7 @@ def kits_detail(request, kit_id):
         kits = Kit.objects.get(id=kit_id)
         return render(request, 'kits/detail.html')
 
-# @login_required
+@login_required
 def create_kit(request, user_id):
     form = KitForm(request.POST)
     if form.is_valid():
