@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
@@ -9,15 +9,11 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView, D
 from .models import Strategy, Kit, State
 from .forms import KitForm, StrategyForm
 
-
-# import HttpResponse to test view functions
-# will delete after imlementing templates
-from django.http import HttpResponse
-
 # Create your views here.
 def home(request):
     states = State.objects.all()
-    return render(request, 'home.html', { 'states': states })
+    google_api_key = os.environ['GOOGLE_API_KEY']
+    return render(request, 'home.html', { 'states': states, 'google_api_key': google_api_key })
 
 def kits_index(request):
     return render(request, 'covidtracker/index.html')
