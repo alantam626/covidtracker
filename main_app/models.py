@@ -1,12 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
-# from re import S
-
 
 # Create your models here.
 class CustomUser(AbstractUser):
-    country = models.CharField(max_length=30, blank=True)
+    state = models.CharField(max_length=30, blank=True)
 
 class Strategy(models.Model):
     name = models.CharField(max_length=100)
