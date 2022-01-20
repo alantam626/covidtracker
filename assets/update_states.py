@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 
 try:
-    connection = psycopg.connect(user="sungjunchoi", password="1234", dbname='covidtracker')
+    connection = psycopg.connect(user="chriskehoe", dbname='covidtracker')
     cursor = connection.cursor()
     print(cursor)
     print("PostgreSQL server information")
