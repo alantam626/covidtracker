@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import State, Strategy, Kit, CustomUser
+from .models import State, Strategy, Kit, CustomUser, Photo
 
 
 # custom user class
@@ -15,3 +15,4 @@ admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(State)
 admin.site.register(Strategy)
 admin.site.register(Kit)
+admin.site.register(Photo)
