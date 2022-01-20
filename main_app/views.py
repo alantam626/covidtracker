@@ -5,16 +5,20 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from .forms import KitForm, StrategyForm, UserForm, StateForm
 import uuid
 import boto3
 from .models import Strategy, Kit, State, Photo
-from .forms import KitForm, StrategyForm, UserForm
 
 # Create your views here.
 def home(request):
     states = State.objects.all()
     google_api_key = os.environ['GOOGLE_API_KEY']
-    return render(request, 'home.html', { 'states': states, 'google_api_key': google_api_key })
+    state_form = StateForm()
+    return render(request, 'home.html', { 
+        'states': states, 'google_api_key': google_api_key,
+        'state_form': state_form
+    })
 
 @login_required
 def kits_index(request):
@@ -44,6 +48,10 @@ def signup(request):
     form = UserForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+def add_state(request):
+
+    return redirect('home')
 
 class StrategyCreate(CreateView):
     model = Strategy

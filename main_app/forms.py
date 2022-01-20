@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 from django.forms import ModelForm, Select
 from django import forms
+=======
+from django.forms import ModelForm
+>>>>>>> main
 from django.contrib.auth.forms import UserCreationForm
 from .models import Kit, Strategy, CustomUser
 
@@ -17,8 +21,11 @@ class StrategyForm(ModelForm):
         fields = '__all__'
 
 class UserForm(UserCreationForm):
-    country = forms.CharField(label = "Country")
-
     class Meta:
         model = CustomUser
-        fields = ['username', 'state']
+        fields = ['username']
+
+class StateForm(ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['state']
