@@ -66,7 +66,7 @@ def kits_detail(request, kit_id):
         kits = Kit.objects.get(id=kit_id)
         return render(request, 'kits/detail.html')
 
-# @login_required
+@login_required
 def create_kit(request, user_id):
     form = KitForm(request.POST)
     if form.is_valid():
