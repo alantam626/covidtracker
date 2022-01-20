@@ -15,4 +15,5 @@ urlpatterns = [
     path('kits/<int:pk>/', views.KitDetail.as_view(), name='kits_detail'),
     path('kits/<int:pk>/', views.KitUpdate.as_view(), name='kits_update'),
     path('kits/<int:pk>/', views.KitDelete.as_view(), name='kits_delete'),
+    path('strategies/<int:pk>/add_photo/', views.add_photo, name='add_photo'),
 ]
