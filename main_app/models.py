@@ -17,8 +17,13 @@ class Kit(models.Model):
     date = models.DateField()
     strategy = models.ManyToManyField(Strategy)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
+<<<<<<< HEAD
     
         
+=======
+    def __str__(self):
+        return self.name
+>>>>>>> main
 
     def get_absolute_url(self):
         return reverse('kit_detail', kwargs={'pk': self.id})

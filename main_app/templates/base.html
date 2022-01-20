@@ -21,6 +21,7 @@
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'kits_index' %}">View Kits</a></li>
                         <li><a href="{% url 'kits_create' %}">Create A Kit</a></li>
+                        <li><a href="{% url 'strategies_index' %}">View Strategies</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}">Log In</a></li>
