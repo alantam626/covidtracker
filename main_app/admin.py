@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import State, Strategy, Kit
+from django.contrib.auth.admin import UserAdmin
+from .models import State, Strategy, Kit, CustomUser
+
+
+# custom user class
+class CustomUserAdmin(UserAdmin):
+    list_display = (
+        'username', 'email', 'first_name', 'last_name', 'is_staff', 'country'
+    )
+
+admin.site.register(CustomUser, CustomUserAdmin)
 
 # Register your models here.
 admin.site.register(State)
