@@ -63,13 +63,13 @@ def create_strategy(request):
     return redirect('detail')
 
     
-@login_required
+# @login_required
 def kits_detail(request, kit_id):
     if request.user.kit_set.filter(id=kit_id).exists():
         kits = Kit.objects.get(id=kit_id)
         return render(request, 'kits/detail.html')
 
-@login_required
+# @login_required
 def create_kit(request, user_id):
     form = KitForm(request.POST)
     if form.is_valid():
@@ -91,4 +91,4 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
 
 class KitDelete(LoginRequiredMixin, DetailView):
     model = Kit
-    success_url = '/kits/'
+    success_url = '/kits_index/'
