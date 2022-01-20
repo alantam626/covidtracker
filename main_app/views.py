@@ -2,12 +2,11 @@ import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Strategy, Kit, State
-from .forms import KitForm, StrategyForm
+from .forms import KitForm, StrategyForm, UserForm
 
 # Create your views here.
 def home(request):
@@ -27,18 +26,18 @@ def strategies_detail(request, strategy_id):
     return render(request,'main_app/strategies_detail.html', {'strategy': strategy})
 
 def signup(request):
-    error_mesage = ''
+    error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             # This will add the user to the database
             user = form.save()
             login(request, user)
-            return redirect('kit_index')
+            return redirect('kits_index')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
-    context = {'form': form, 'error-message': error_mesage}
+    form = UserForm()
+    context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
 class StrategyCreate(CreateView):

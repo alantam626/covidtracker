@@ -6,7 +6,7 @@ from .models import State, Strategy, Kit, CustomUser
 # custom user class
 class CustomUserAdmin(UserAdmin):
     list_display = (
-        'username', 'email', 'first_name', 'last_name', 'is_staff', 'country'
+        'username', 'email', 'first_name', 'last_name', 'is_staff', 'state'
     )
 
 admin.site.register(CustomUser, CustomUserAdmin)
