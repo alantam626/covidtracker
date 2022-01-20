@@ -16,7 +16,7 @@ class Kit(models.Model):
     strategy = models.ManyToManyField(Strategy)
     
     def get_absolute_url(self):
-        return reverse('kit_detail', kwargs={'pk': self.id})
+        return reverse('kits_detail', kwargs={'pk': self.id})
         
 class State(models.Model):
     name = models.CharField(max_length = 30)

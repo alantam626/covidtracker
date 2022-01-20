@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Kit Details</h1>
-
+{% for kit in kits.all %}
 <div class="row">
     <div class="col s6 col-offset-3">
       <div class="card">
@@ -9,6 +9,7 @@
           <span class="card-title">{{ kit.name }}</span>
           <p>Date Created: {{kit.date}}</p>
         </div>
+        
         <div class="card-action">
           <a href="{% url 'kit_update' kit.id %}">Edit</a>
           <a href="{% url 'kit_delete' kit.id %}">Delete</a>
@@ -16,4 +17,6 @@
       </div>
     </div>
   </div>
+ 
+  {% endfor %}
 {% endblock %}
