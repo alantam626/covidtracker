@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import State, Strategy, Kit, CustomUser, Photo
 
-
 # custom user class
 class CustomUserAdmin(UserAdmin):
     list_display = (
