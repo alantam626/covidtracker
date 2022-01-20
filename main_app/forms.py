@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 from django.forms import ModelForm, Select
 from django import forms
-=======
-from django.forms import ModelForm
->>>>>>> main
 from django.contrib.auth.forms import UserCreationForm
 from .models import Kit, Strategy, CustomUser
 
