@@ -14,7 +14,7 @@ class Strategy(models.Model):
 class Kit(models.Model):
     date = models.DateField()
     strategy = models.ManyToManyField(Strategy)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 
