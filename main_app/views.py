@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
@@ -8,11 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Strategy, Kit, State
 from .forms import KitForm, StrategyForm
-
-
-# import HttpResponse to test view functions
-# will delete after imlementing templates
-from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
