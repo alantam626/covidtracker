@@ -5,7 +5,9 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from .models import Strategy, Kit, State
+import uuid
+import boto3
+from .models import Strategy, Kit, State, Photo
 from .forms import KitForm, StrategyForm, UserForm
 
 # Create your views here.
@@ -75,6 +77,20 @@ def create_kit(request, user_id):
         new_kit.save()
     return redirect('detail', user_id=user_id)
 
+def add_photo(request, strategy_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.uploadt_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, strategy_id=strategy_id)
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('detail', strategy_id=strategy_id)
+    
 class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
     fields = '__all__'
@@ -89,3 +105,6 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
 class KitDelete(LoginRequiredMixin, DetailView):
     model = Kit
     success_url = '/kits_index/'
+
+def some_function(request):
+    secret_key = os.environ['SECRET_KEY']
