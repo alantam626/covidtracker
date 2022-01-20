@@ -63,6 +63,9 @@ class Strategy(models.Model):
     name = models.CharField(max_length=100)
     rating = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name}"
     
 class Kit(models.Model):
     date = models.DateField()
