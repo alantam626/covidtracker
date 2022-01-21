@@ -13,9 +13,8 @@ urlpatterns = [
     path('strategies/<int:pk>/delete', views.StrategyDelete.as_view(), name='strategies_delete'),
     path('kits/create/', views.KitCreate.as_view(), name ='kits_create'),
     path('kits/<int:pk>/', views.KitDetail.as_view(), name='kits_detail'),
-    path('kits/<int:pk>/', views.KitUpdate.as_view(), name='kits_update'),
-    path('kits/<int:pk>/', views.KitDelete.as_view(), name='kits_delete'),
-    path('states/add/<int:user_id>/', views.add_state, name='add_state'),
-    path('strategies/<int:pk>/add_photo/', views.add_photo, name='add_photo'),
+    path('kits/<int:pk>/update', views.KitUpdate.as_view(), name='kits_update'),
+    path('kits/<int:pk>/delete', views.KitDelete.as_view(), name='kits_delete'),
+    path('states/add/', views.add_state, name='add_state'),
     path('strategies/<int:strategy_id>/add_photo/', views.add_photo, name='add_photo'),
 ]
