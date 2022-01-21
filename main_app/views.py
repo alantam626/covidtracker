@@ -109,7 +109,7 @@ class KitDetail(LoginRequiredMixin, DetailView):
 class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = '__all__'
-
+    success_url = '/kits_index/'
 class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits_index/'
