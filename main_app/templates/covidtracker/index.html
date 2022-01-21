@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>Kit List</h1>
-{% for kit in kit_index %}
+{% for kit in kits_index %}
 <a href="{% url 'kits_detail' kit.id %}"></a>
 <div class="card">
     <div class="card-content">

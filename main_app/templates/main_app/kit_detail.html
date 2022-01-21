@@ -9,7 +9,6 @@
           <span class="card-title">{{ kit.name }}</span>
           <p>Date Created: {{kit.date}}</p>
         </div>
-        
         <div class="card-action">
           <a href="{% url 'kit_update' kit.id %}">Edit</a>
           <a href="{% url 'kit_delete' kit.id %}">Delete</a>
