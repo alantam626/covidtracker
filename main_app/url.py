@@ -11,7 +11,6 @@ urlpatterns = [
     path('kits/create/', views.KitCreate.as_view(), name='kits_create'),
     path('strategies/<int:pk>/update', views.StrategyUpdate.as_view(), name='strategies_update'),
     path('strategies/<int:pk>/delete', views.StrategyDelete.as_view(), name='strategies_delete'),
-    path('kits/create/', views.KitCreate.as_view(), name ='kits_create'),
     path('kits/<int:pk>/', views.KitDetail.as_view(), name='kits_detail'),
     path('kits/<int:pk>/update', views.KitUpdate.as_view(), name='kits_update'),
     path('kits/<int:pk>/delete', views.KitDelete.as_view(), name='kits_delete'),
