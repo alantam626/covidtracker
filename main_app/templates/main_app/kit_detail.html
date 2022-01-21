@@ -6,20 +6,11 @@
     <div class="col s6 col-offset-3">
       <div class="card">
         <div class="card-content">
-<<<<<<< HEAD
           <p>Date Created: {{ kit.date }}</p>
         </div>
         <div class="card-action">
-          <!-- <a href="{% url 'kits_update' kit.id %}">Edit</a> -->
+          <a href="{% url 'kits_update' kit.id %}">Edit</a>
           <a href="{% url 'kits_delete' kit.id %}">Delete</a>
-=======
-          <span class="card-title">{{ kit.name }}</span>
-          <p>Date Created: {{kit.date}}</p>
-        </div>
-        <div class="card-action">
-          <a href="{% url 'kit_update' kit.id %}">Edit</a>
-          <a href="{% url 'kit_delete' kit.id %}">Delete</a>
->>>>>>> 79ce758aed1886da793fd4cbb3e58d4e5ea2648e
         </div>
       </div>
     </div>

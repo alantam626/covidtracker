@@ -111,7 +111,7 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = '__all__'
 
-class KitDelete(LoginRequiredMixin, DetailView):
+class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits_index/'
 
