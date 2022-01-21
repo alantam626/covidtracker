@@ -54,21 +54,16 @@ def add_state(request):
 class StrategyCreate(CreateView):
     model = Strategy
     fields = '__all__'
+    success_url = '/strategies/'
 
 class StrategyUpdate(UpdateView):
     model = Strategy
     fields = ['rating', 'type']
+    
 
 class StrategyDelete(DeleteView):
     model = Strategy
-    success_url = '/strategies_index/'
-
-def create_strategy(request):
-    form = StrategyForm(request.POST)
-    if form.is_valid():
-        new_strategy = form.save(commit=False)
-        new_strategy.save()
-    return redirect('detail')
+    success_url = '/strategies/'
 
     
 # @login_required
