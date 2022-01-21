@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 
 try:
-    connection = psycopg.connect(user="alan", dbname='covidtracker')
+    connection = psycopg.connect(user="sungjunchoi", dbname='covidtracker')
     cursor = connection.cursor()
     print(cursor)
     print("PostgreSQL server information")
@@ -22,6 +22,8 @@ try:
         data = data.astype({'Deaths': 'int'})
 
         states = data.values.tolist()
+
+        cursor.execute('TRUNCATE main_app_state')
 
         # add states data
         for state in states:
