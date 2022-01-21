@@ -20,14 +20,17 @@ def home(request):
         'state_form': state_form
     })
 
+@login_required
 def kits_index(request):
     kits = Kit.objects.all()
-    return render(request, 'covidtracker/index.html', {'kits': kits })
+    return render(request, 'covidtracker/index.html', {'kits': kits})
 
+@login_required
 def strategies_index(request):
     strategies = Strategy.objects.all()
     return render(request, 'main_app/strategies_index.html', { 'strategies': strategies })
 
+@login_required
 def strategies_detail(request, strategy_id):
     strategy = Strategy.objects.get(id=strategy_id)
     return render(request,'main_app/strategies_detail.html', {'strategy': strategy})
@@ -63,6 +66,7 @@ class StrategyDelete(DeleteView):
     model = Strategy
     success_url = '/strategies_index/'
 
+@login_required
 def create_strategy(request):
     form = StrategyForm(request.POST)
     if form.is_valid():
@@ -71,11 +75,11 @@ def create_strategy(request):
     return redirect('detail')
 
     
-# @login_required
+@login_required
 def kits_detail(request, kit_id):
     if request.user.kit_set.filter(id=kit_id).exists():
         kits = Kit.objects.get(id=kit_id)
-        return render(request, 'kits/detail.html')
+        return render(request, 'covidtracker/index.html', {'kits' : kits})
 
 @login_required
 def create_kit(request, user_id):
@@ -84,7 +88,7 @@ def create_kit(request, user_id):
         new_kit = form.save(commit=False)
         new_kit.user_id = user_id
         new_kit.save()
-    return redirect('detail', user_id=user_id)
+    return redirect('kits_detail', user_id=user_id)
 
 def add_photo(request, strategy_id):
     photo_file = request.FILES.get('photo-file', None)
@@ -103,6 +107,10 @@ def add_photo(request, strategy_id):
 class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
     fields = '__all__'
+    def form_valid(self, form):
+  
+      form.instance.user = self.request.user 
+      return super().form_valid(form)
 
 class KitDetail(LoginRequiredMixin, DetailView):
     model = Kit
@@ -111,7 +119,7 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = '__all__'
 
-class KitDelete(LoginRequiredMixin, DetailView):
+class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits_index/'
 
