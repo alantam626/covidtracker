@@ -1,14 +1,16 @@
 import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .forms import KitForm, StrategyForm, UserForm, StateForm
 import uuid
 import boto3
-from .models import Strategy, Kit, State, Photo
+from .models import CustomUser, Strategy, Kit, State, Photo
+
+User = get_user_model()
 
 # Create your views here.
 def home(request):
@@ -47,8 +49,11 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-def add_state(request):
-
+def add_state(request, user_id):
+    # user = User.objects.filter(id = user_id)[0]
+    # user.state = request.POST['state']
+    # user.save()
+    pass
     return redirect('home')
 
 class StrategyCreate(CreateView):

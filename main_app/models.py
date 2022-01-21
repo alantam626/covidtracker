@@ -47,7 +47,7 @@ STATES = (
     ('SC', 'South Carolina'),
     ('SD', 'South Dakota'),
     ('TN', 'Tennessee'),
-    ('TX', 'Texas'),
+    ('TX', 'Texas'),                          
     ('UT', 'Utah'),
     ('VT', 'Vermont'),
     ('VA', 'Virginia'),
@@ -72,8 +72,6 @@ class Strategy(models.Model):
 class Kit(models.Model):
     date = models.DateField()
     strategy = models.ManyToManyField(Strategy)
-    def get_absolute_url(self):
-        return reverse('kits_detail', kwargs={'pk': self.id})
         
 class State(models.Model):
     name = models.CharField(max_length = 30)
@@ -88,4 +86,3 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for strategy_id: {self.strategy_id} @{self.url}"
-
