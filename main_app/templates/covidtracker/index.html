@@ -3,13 +3,9 @@
 
 <h1>Kit List</h1>
 {% for kit in kits %}
-    <a href="{% url 'kits_detail' kit.id %}">
-        <div class="card">
-            <div class="card-content">
-                <p>Date Created: {{kit.date}}</p>
-            </div>
-        </div>
-    </a>
+<a href="{% url 'kits_detail' kit.id %}"></a>
+<p>Date Created: {{kit.date}}</p>
+
 {% endfor %}
 
 {% endblock %}
