@@ -21,7 +21,8 @@ def home(request):
     })
 
 def kits_index(request):
-    return render(request, 'covidtracker/index.html')
+    kits = Kit.objects.all()
+    return render(request, 'covidtracker/index.html', {'kits': kits })
 
 def strategies_index(request):
     strategies = Strategy.objects.all()
