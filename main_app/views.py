@@ -92,12 +92,12 @@ def add_photo(request, strategy_id):
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
         try:
             bucket = os.environ['S3_BUCKET']
-            s3.uploadt_fileobj(photo_file, bucket, key)
+            s3.upload_fileobj(photo_file, bucket, key)
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
             Photo.objects.create(url=url, strategy_id=strategy_id)
         except:
             print('An error occurred uploading file to S3')
-    return redirect('detail', strategy_id=strategy_id)
+    return redirect('strategies_detail', strategy_id=strategy_id)
     
 class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
