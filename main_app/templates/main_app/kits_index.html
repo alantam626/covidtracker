@@ -2,6 +2,7 @@
 {% block content %}
 
 <h1>Kit List</h1>
+<<<<<<< HEAD
 <div>
 {% for kit in kits %}
 <a href="{% url 'kit_detail' kit.id %}"></a>
@@ -12,4 +13,13 @@
 
         {% endfor %}
     </div>
+=======
+{{kits}}
+{% for kit in kits %}
+<a href="{% url 'kits_detail' kit.id %}"></a>
+<p>Date Created: {{kit.date}}</p>
+
+{% endfor %}
+
+>>>>>>> main
 {% endblock %}

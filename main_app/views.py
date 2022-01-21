@@ -23,7 +23,11 @@ def home(request):
 @login_required
 def kits_index(request):
     kits = Kit.objects.all()
+<<<<<<< HEAD
     return render(request, 'covidtracker/index.html', {'kits': kits})
+=======
+    return render(request, 'covidtracker/index.html', {'kits': kits })
+>>>>>>> main
 
 @login_required
 def strategies_index(request):
