@@ -45,7 +45,7 @@ STATES = (
     ('SC', 'South Carolina'),
     ('SD', 'South Dakota'),
     ('TN', 'Tennessee'),
-    ('TX', 'Texas'),
+    ('TX', 'Texas'),                          
     ('UT', 'Utah'),
     ('VT', 'Vermont'),
     ('VA', 'Virginia'),
@@ -56,8 +56,15 @@ STATES = (
 )
 
 # Create your models here.
+class State(models.Model):
+    name = models.CharField(max_length = 30)
+    confirmed = models.IntegerField()
+    death = models.IntegerField()
+    lat = models.CharField(max_length = 10)
+    long = models.CharField(max_length = 10)
+
 class CustomUser(AbstractUser):
-    state = models.CharField(max_length=2, choices=STATES)
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
 
 class Strategy(models.Model):
     name = models.CharField(max_length=100)
@@ -70,10 +77,4 @@ class Kit(models.Model):
 
     def get_absolute_url(self):
         return reverse('kit_detail', kwargs={'pk': self.id})
-        
-class State(models.Model):
-    name = models.CharField(max_length = 30)
-    confirmed = models.IntegerField()
-    death = models.IntegerField()
-    lat = models.CharField(max_length = 10)
-    long = models.CharField(max_length = 10)
+    
