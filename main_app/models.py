@@ -63,6 +63,9 @@ class Strategy(models.Model):
     name = models.CharField(max_length=100)
     rating = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name}"
     
 class Kit(models.Model):
     date = models.DateField()
@@ -80,7 +83,7 @@ class State(models.Model):
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
-    vaccine_card = models.ForeignKey(Strategy, on_delete=models.CASCADE)
+    strategy = models.ForeignKey(Strategy, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Photo for strategy_id: {self.strategy_id} @{self.url}"

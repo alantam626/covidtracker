@@ -5,8 +5,8 @@
 <div>Rating: {{ strategy.rating }}</div>
 
 <ul>
-    <li><a href="{% url 'strategies_update' strategy.id %}">Edit Strategy</li>
-    <li><a href="{% url 'strategies_delete' strategy.id %}">Delete Strategy</li>
+    <li><a href="{% url 'strategies_update' strategy.id %}">Edit Strategy</a></li>
+    <li><a href="{% url 'strategies_delete' strategy.id %}">Delete Strategy</a></li>
 </ul>
 
 {% for photo in strategy.photo_set.all %}
@@ -22,5 +22,5 @@
     <br><br>
     <input type="submit" class="btn" value="Upload Photo">
 </form>
-</form>
+
 {% endblock %}
