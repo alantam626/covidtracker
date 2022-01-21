@@ -1,5 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <h1>Home</h1>
+<input id='test' value='test'>
+<div class="col s6">
+{% if user.is_authenticated %}
+    <h4>Select Your State</h4>
+    <form method="POST" action="{% url 'add_state' user.id %}">
+        {% csrf_token %}
+        {{ state_form.as_p }}
+        <input type="submit" class="btn" value="Add State">
+    </form>
+{% endif %}
+</div>
+<div id='map-container'>
+    <div id='map'></div>
+</div>
+
+<table>
+    <tr>
+        <th>State</th>
+        <th>Confirmed</th>
+        <th>Death</th>
+    </tr>
+    {% for state in states %}
+        <tr>
+            <td>{{ state.name }}</td>
+            <td>{{ state.confirmed }}</td>
+            <td>{{ state.death }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<script
+      src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap&v=weekly"
+      async
+></script>
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
