@@ -102,7 +102,7 @@ def add_photo(request, strategy_id):
 class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
     fields = '__all__'
-
+    success_url = '/kits_index/'
 class KitDetail(LoginRequiredMixin, DetailView):
     model = Kit
 
