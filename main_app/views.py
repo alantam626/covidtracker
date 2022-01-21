@@ -37,7 +37,7 @@ def signup(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            # This will add the user to the database
+          
             user = form.save()
             login(request, user)
             return redirect('kits_index')
@@ -111,7 +111,7 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = '__all__'
 
-class KitDelete(LoginRequiredMixin, DetailView):
+class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits_index/'
 
