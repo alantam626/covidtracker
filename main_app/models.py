@@ -70,6 +70,8 @@ class Strategy(models.Model):
 class Kit(models.Model):
     date = models.DateField()
     strategy = models.ManyToManyField(Strategy)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     
     def get_absolute_url(self):
         return reverse('kits_detail', kwargs={'pk': self.id})

@@ -2,14 +2,14 @@
 {% block content %}
 
 <h1>Kit List</h1>
-<<<<<<< HEAD
-{% for kit in kits_index %}
-=======
 {% for kit in kits %}
->>>>>>> main
-<a href="{% url 'kits_detail' kit.id %}"></a>
-<p>Date Created: {{kit.date}}</p>
-
+    <a href="{% url 'kits_detail' kit.id %}">
+        <div class="card">
+            <div class="card-content">
+                <p>Date Created: {{kit.date}}</p>
+            </div>
+        </div>
+    </a>
 {% endfor %}
 
 {% endblock %}

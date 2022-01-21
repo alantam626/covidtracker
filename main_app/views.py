@@ -23,11 +23,7 @@ def home(request):
 @login_required
 def kits_index(request):
     kits = Kit.objects.all()
-<<<<<<< HEAD
     return render(request, 'covidtracker/index.html', {'kits': kits})
-=======
-    return render(request, 'covidtracker/index.html', {'kits': kits })
->>>>>>> main
 
 @login_required
 def strategies_index(request):
@@ -123,7 +119,7 @@ class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = '__all__'
 
-class KitDelete(LoginRequiredMixin, DetailView):
+class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits_index/'
 
