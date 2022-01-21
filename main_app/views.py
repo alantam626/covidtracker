@@ -50,9 +50,10 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 def add_state(request, user_id):
-    user = User.objects.filter(id = user_id)[0]
-    user.state = request.POST['state']
-    user.save()
+    # user = User.objects.filter(id = user_id)[0]
+    # user.state = request.POST['state']
+    # user.save()
+    pass
     return redirect('home')
 
 class StrategyCreate(CreateView):

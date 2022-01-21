@@ -72,8 +72,6 @@ class Strategy(models.Model):
 class Kit(models.Model):
     date = models.DateField()
     strategy = models.ManyToManyField(Strategy)
-    def get_absolute_url(self):
-        return reverse('kits_detail', kwargs={'pk': self.id})
         
 class State(models.Model):
     name = models.CharField(max_length = 30)
