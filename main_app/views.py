@@ -40,7 +40,7 @@ def signup(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            # This will add the user to the database
+          
             user = form.save()
             login(request, user)
             return redirect('kits_index')

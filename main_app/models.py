@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
+
+
 STATES = (
     ('AL', 'Alabama'),
     ('AK', 'Alaska'),
@@ -89,3 +91,4 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for strategy_id: {self.strategy_id} @{self.url}"
+
