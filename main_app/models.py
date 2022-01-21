@@ -79,6 +79,7 @@ class State(models.Model):
     death = models.IntegerField()
     lat = models.CharField(max_length = 10)
     long = models.CharField(max_length = 10)
+    
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
