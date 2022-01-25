@@ -12,4 +12,51 @@
     </a>
 {% endfor %}
 
+<div id="state-panel" class="col s6">
+    <div id="your-state">
+        <p><b>{{ user.state }}</b>'s Covid Stats</p>
+        <p>Confiremd: {{ user.state.confirmed }}</p>
+        <p>Deaths: {{ user.state.death }}</p>
+    </div>
+    <form id="state-form" method="POST" action="{% url 'add_state' user.id %}">
+        {% csrf_token %}
+        <label>Update Your State</label>
+        {{ state_form.as_p }}
+        <input type="submit" class="btn" value="Update">
+    </form>
+{% endif %}
+</div> 
+<div id="covid-data" class="row">
+    <div id="map-container" class="col">
+        <div id="map"></div>
+    </div>
+    <div id="table-container">
+        <table id="covid-table">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Confirmed</th>
+                    <th>Death</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for state in states %}
+                <tr>
+                    <td>{{ state.name }}</td>
+                    <td>{{ state.confirmed }}</td>
+                    <td>{{ state.death }}</td>
+                    <td>{{ state.lat }}</td>
+                    <td>{{ state.long }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script
+      src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap&v=weekly"
+      async
+></script>
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
