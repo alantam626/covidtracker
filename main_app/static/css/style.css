@@ -1,71 +1,13 @@
 #map-container {
     display: block;
     height: 400px;
-    filter: drop-shadow(0px 2px 3px #777);
+    filter: drop-shadow(0px 3px 1px #999);
 }
 
 #map {
     height: 100%;
-    width: 600px;
 }
 
 select {
     display: block;
-}
-
-#table-container {
-    height: 400px;
-    width: 315px;
-    overflow-y: scroll;
-    filter: drop-shadow(0px 2px 3px #777);
-}
-
-#covid-table {
-    background-color: rgb(240, 240, 240);
-    width: 300px;
-    color: rgba(0, 0, 0, 1);
-    font-size: 13px;
-}
-
-#covid-table td, #covid-table th{
-    padding: 10px 15px;
-}
-
-#covid-table tbody tr:hover {
-    background-color: rgba(30, 143, 255, 1);
-    color: white;
-}
-
-#covid-table tbody td:nth-child(4), #covid-table tbody :nth-child(5) {
-    display: none;
-}
-
-#state-panel {
-    height: 170px;
-    display: flex;
-    width: 100%;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    gap: 80px;
-}
-
-#your-state {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    gap: 0px;
-}
-
-#state-form {
-    width: 200px;
-    display:inline-block;
-}
-
-#covid-data {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }

@@ -24,15 +24,7 @@ def home(request):
 
 def kits_index(request):
     kits = Kit.objects.all()
-    states = State.objects.all()
-    google_api_key = os.environ['GOOGLE_API_KEY']
-    state_form = StateForm()
-    return render(request, 'covidtracker/index.html', {
-            'kits': kits, 
-            'states': states, 
-            'google_api_key': google_api_key,
-            'state_form': state_form 
-        })
+    return render(request, 'covidtracker/index.html', {'kits': kits })
 
 def strategies_index(request):
     strategies = Strategy.objects.all()
@@ -59,9 +51,9 @@ def signup(request):
 
 def add_state(request, user_id):
     user = User.objects.filter(id = user_id)[0]
-    user.state = State.objects.filter(id = request.POST['state']).first()
+    user.state = request.POST['state']
     user.save()
-    return redirect('kits_index')
+    return redirect('home')
 
 class StrategyCreate(CreateView):
     model = Strategy
@@ -111,14 +103,13 @@ class KitCreate (LoginRequiredMixin, CreateView):
     model = Kit
     fields = '__all__'
     success_url = '/kits_index/'
-
 class KitDetail(LoginRequiredMixin, DetailView):
     model = Kit
 
 class KitUpdate(LoginRequiredMixin, UpdateView):
     model = Kit
     fields = '__all__'
-
+    success_url = '/kits_index/'
 class KitDelete(LoginRequiredMixin, DeleteView):
     model = Kit
     success_url = '/kits_index/'
