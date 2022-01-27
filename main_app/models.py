@@ -58,6 +58,9 @@ STATES = (
 )
 
 # Create your models here.
+class CustomUser(AbstractUser):
+    state = models.CharField(max_length=2, choices=STATES)
+
 class Strategy(models.Model):
     name = models.CharField(max_length=100)
     rating = models.CharField(max_length=50)
@@ -76,12 +79,6 @@ class State(models.Model):
     death = models.IntegerField()
     lat = models.CharField(max_length = 10)
     long = models.CharField(max_length = 10)
-
-    def __str__(self):
-        return f"{self.name}"
-
-class CustomUser(AbstractUser):
-    state = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)

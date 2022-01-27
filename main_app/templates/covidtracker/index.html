@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
 
-{% if user.is_authenticated %}
-<h1>Hello, {{ user }}</h1>
-<h4>Kit List</h4>
+<h1>Kit List</h1>
 {% for kit in kits %}
     <a href="{% url 'kits_detail' kit.id %}">
         <div class="card">
@@ -14,7 +11,6 @@
         </div>
     </a>
 {% endfor %}
-
 
 <div id="state-panel" class="col s6">
     <div id="your-state">

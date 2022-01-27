@@ -13,7 +13,7 @@ Video Poker was created with Python, Django and Amazon S3 image hosting. Visual 
 
 ## Getting Started
 
-It is available [here](https://alantam626.github.io/videoPoker/).
+It is available [here](https://covidtrackersei.herokuapp.com/).
 
 ## Next Steps
 
