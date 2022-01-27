@@ -16,4 +16,4 @@ class Migration(migrations.Migration):
             name='strategy',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='main_app.strategy'),
         ),
-    ]
+    ] 
