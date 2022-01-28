@@ -15,7 +15,7 @@
 <div id="state-panel" class="col s6">
     <div id="your-state">
         <p><b>{{ user.state }}</b>'s Covid Stats</p>
-        <p>Confiremd: {{ user.state.confirmed }}</p>
+        <p>Confirmed: {{ user.state.confirmed }}</p>
         <p>Deaths: {{ user.state.death }}</p>
     </div>
     <form id="state-form" method="POST" action="{% url 'add_state' user.id %}">
@@ -24,7 +24,7 @@
         {{ state_form.as_p }}
         <input type="submit" class="btn" value="Update">
     </form>
-{% endif %}
+
 </div> 
 <div id="covid-data" class="row">
     <div id="map-container" class="col">
@@ -58,5 +58,6 @@
       src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap&v=weekly"
       async
 ></script>
+{% load static %}
 <script src="{% static 'js/main.js' %}"></script>
 {% endblock %} 
